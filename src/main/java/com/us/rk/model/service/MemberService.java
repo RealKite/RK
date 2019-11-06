@@ -4,7 +4,7 @@ import com.us.rk.model.dto.MemberBean;
 
 public interface MemberService {
 	
-	void signCheck(MemberBean memberBean);
+	public void signCheck(MemberBean memberBean);
 
-	int idCheck(String id);
+	public int idCheck(String id);
 }
