@@ -13,8 +13,8 @@
 <body>
 <input type="button" class="btn btn-sm btn-primary" id="backBtn" value="돌아가기">
 	<div class="text-center">
-		<div class="btn">
-			<input type="text" name="boardSearch" id="boardSearch"> 
+		<div class="mb-3">
+			<input type="text" class="form-control" name="boardSearch" id="boardSearch"> 
 			<input type="button" class="btn btn-primary btn-sm" id="searchBtn" value="검색"> 
 			<input type="button" class="btn btn-primary btn-sm" id="writeBtn" value="글작성"><br> 
 		</div>

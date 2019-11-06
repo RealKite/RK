@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>BoardWriting</title>
 
+<link rel="stylesheet" href="/resources/css/board.css">
 <link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -17,19 +18,19 @@
 	<input type="button" class="btn btn-sm btn-primary" id="backBtn" value="돌아가기">
 	<form action="/boardRegister">
 		<div class="mb-3">
-			<label for="board_no">글번호:</label> 
+			<label for="board_no">글번호</label> 
 			<input type="text" class="form-control" id="board_no" name="board_no" readonly="readonly" value="${boardBean.board_no}">
 		</div>
 		<div class="mb-3">
-			<label for="member_no">글쓴이:</label> 
+			<label for="member_no">글쓴이</label> 
 			<input type="text" class="form-control" id="member_no" name="member_no" readonly="readonly" value="1">
 		</div>
 		<div class="mb-3">
-			<label for="title">제목:</label>
+			<label for="title">제목</label>
 			<input type="text" class="form-control" id="title" name="title" value="${boardBean.title}">
 		</div>
 		<div class="mb-3">
-			<label for="contents">내용:</label>
+			<label for="contents">내용</label>
 			<textarea class="form-control" id="contents" name="contents">${boardBean.contents}</textarea>
 		</div>
 		<div class="text-center">
