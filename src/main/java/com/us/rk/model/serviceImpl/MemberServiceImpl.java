@@ -10,13 +10,19 @@ import com.us.rk.model.service.MemberService;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService{
-	
+
 	@Autowired
 	MemberMapper memberMapper;
-	
+
 	@Override
 	public void signCheck(MemberBean memberBean) {
 		memberMapper.insertMember(memberBean);
 
+	}
+
+	@Override
+	public int idCheck(String id) {
+		
+		return memberMapper.idCheck(id);
 	}
 }

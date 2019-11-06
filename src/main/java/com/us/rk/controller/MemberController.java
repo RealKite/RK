@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.us.rk.model.dto.MemberBean;
 import com.us.rk.model.service.MemberService;
@@ -26,6 +28,13 @@ public class MemberController {
 		memberService.signCheck(memberBean);
 		
 		return "member/login";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="id_check",method=RequestMethod.GET)
+	public int idCheck(@RequestParam("id")String id) {
+		
+		return memberService.idCheck(id);
 	}
 
 }
