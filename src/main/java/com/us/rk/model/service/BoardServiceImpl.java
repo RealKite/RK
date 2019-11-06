@@ -18,19 +18,25 @@ public class BoardServiceImpl implements BoardService{
 		List<BoardBean> findAll = boardMapper.findAll(); 
 		return findAll;
 	}
-	
 	@Override
 	public void boardWrite(BoardBean boardBean) {
 		boardMapper.boardWrite(boardBean);
 	}
-	
 	@Override
 	public BoardBean findById(int board_no) {
 		return boardMapper.findById(board_no);
 	}
-	
 	@Override
 	public void boardUpdate(BoardBean boardBean) {
 		boardMapper.boardUpdate(boardBean);
+	}
+	@Override
+	public void boardDelete(int board_no) {
+		boardMapper.boardDelete(board_no);
+	}
+	
+	@Override
+	public List<BoardBean> boardSearch(String word) {
+		return boardMapper.boardSearch(word);
 	}
 }

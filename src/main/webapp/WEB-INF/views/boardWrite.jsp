@@ -14,6 +14,7 @@
 
 <body>
 	<h3>글작성</h3>
+	<input type="button" class="btn btn-sm btn-primary" id="backBtn" value="돌아가기">
 	<form action="/boardRegister">
 		<div class="mb-3">
 			<label for="board_no">글번호:</label> 
@@ -31,14 +32,12 @@
 			<label for="contents">내용:</label>
 			<textarea class="form-control" id="contents" name="contents">${boardBean.contents}</textarea>
 		</div>
-<!-- 		<div class="mb-3"> -->
-<!-- 			<label for="email">파일</label> -->
-<!-- 		</div> -->
 		<div class="text-center">
 			<input type="submit" class="btn btn-sm btn-primary" id="submitBtn" value="등록">
-			<input type="submit" class="btn btn-sm btn-primary" id="submitBtn" value="수정">
+			<input type="submit" class="btn btn-sm btn-primary" id="modifyBtn" value="수정">
 		</div>
 	</form>
+	<script src="/resources/js/boardWrite.js"></script>
 </body>
 
 </html>

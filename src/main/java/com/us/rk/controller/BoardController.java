@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.us.rk.model.dto.BoardBean;
 import com.us.rk.model.service.BoardService;
@@ -24,17 +25,25 @@ public class BoardController {
 		return "board";
 	}
 	
-	@RequestMapping("/boardWriting")
-	public String boardWriting(Model model) {
-		return "boardWriting";
+	@RequestMapping("/board/{word}")
+	public String boardSearch(@PathVariable("word") String word, Model model) {
+		List<BoardBean> search = boardService.boardSearch(word);
+		model.addAttribute("board", search);
+		return "board";
 	}
 	
-	@RequestMapping("/boardWriting/{no}")
+	@RequestMapping("/boardWrite")
+	public String boardWriting(Model model) {
+		model.addAttribute("boardBean", new BoardBean());
+		return "boardWrite";
+	}
+	
+	@RequestMapping("/boardWrite/{no}")
 	public String boardModify(@PathVariable("no") int board_no, Model model) {
 		BoardBean board = boardService.findById(board_no);
 		System.out.println("번호~~~~~~~~~~~:" + board.getBoard_no());
 		model.addAttribute("boardBean", board);
-		return "boardWriting";
+		return "boardWrite";
 	}
 	
 	@RequestMapping("/boardView/{no}")
@@ -44,18 +53,23 @@ public class BoardController {
 		return "boardView";
 	}
 	
+	@RequestMapping("/boardDelete/{no}")
+	public String boardDelete(@PathVariable("no") int board_no, Model model) {
+		boardService.boardDelete(board_no);
+		return "redirect:/board";
+	}
+	
 	@RequestMapping("/boardRegister")
 	public String boardRegister(BoardBean boardBean) {
-		System.err.println("이건? : " +boardBean);
-		System.out.println("글번호: " + boardBean.getBoard_no());
+		System.out.println(boardBean.getBoard_no());
+		System.out.println(boardBean.getBoard_no()=='0');
 		if(boardBean.getBoard_no() == 0) {
-			System.out.println("1번이야?");
 			boardService.boardWrite(boardBean);
 		}else {
-			System.out.println("2번이야?");
 			boardService.boardUpdate(boardBean);
-			System.out.println("수정 : " + boardBean);
-		}	
+		}
 		return "redirect:board";
 	}
+
+	
 }
