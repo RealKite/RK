@@ -6,6 +6,9 @@
 	<select id="findAll" resultType="com.us.rk.model.dto.BoardBean">
 		SELECT * FROM board ORDER BY board_no DESC
 	</select> 
+	<select id="boardListCount" resultType="Integer">
+		SELECT COUNT(*) FROM board
+	</select> 
 	<select id="findById" resultType="com.us.rk.model.dto.BoardBean" parameterType="com.us.rk.model.dto.BoardBean">
 		SELECT * FROM board WHERE board_no=#{board_no}
 	</select>

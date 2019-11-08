@@ -11,4 +11,6 @@ public interface BoardService {
 	public void boardUpdate(BoardBean boardBean);
 	public void boardDelete(int board_no);
 	public List<BoardBean> boardSearch(String word);
+	
+	public int boardListCount();
 }

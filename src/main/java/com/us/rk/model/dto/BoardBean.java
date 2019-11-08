@@ -8,6 +8,9 @@ public class BoardBean {
 	private Date upload_time;
 	private String title;
 	private String contents;
+    private int startIndex;
+    private int cntPerPage;
+	
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -38,6 +41,17 @@ public class BoardBean {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public int getCntPerPage() {
+		return cntPerPage;
+	}
+	public void setCntPerPage(int cntPerPage) {
+		this.cntPerPage = cntPerPage;
+	}
 	
 }

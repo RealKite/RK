@@ -39,4 +39,9 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardBean> boardSearch(String word) {
 		return boardMapper.boardSearch(word);
 	}
+	
+	@Override
+	public int boardListCount() {
+		return boardMapper.boardListCount();
+	}
 }

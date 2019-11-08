@@ -9,9 +9,17 @@
 <link rel="stylesheet" href="/resources/css/board.css">
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    function fn_paging(curPage){
+        location.href="/boardList?curPage="+curPage;
+    }
+</script>
 </head>
 <body>
-<input type="button" class="btn btn-sm btn-primary" id="backBtn" value="돌아가기">
+	총 게시글 수 : ${paging.listCnt} / 총 페이지 수 : ${paging.pageCnt } / 총 블럭 수 : ${paging.rangeCnt }
+	총 게시글 수 : ${listCnt} / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } 
+
+	<input type="button" class="btn btn-sm btn-primary" id="backBtn" value="돌아가기">
 	<div class="text-center">
 		<div class="mb-3">
 			<input type="text" class="form-control" name="boardSearch" id="boardSearch"> 
@@ -37,6 +45,37 @@
 				</c:forEach>
 			</table>
 		</div>
+		
+		        <div class="greenTable outerTableFooter">
+            <div class="tableFootStyle">
+                <div class="links">
+	                 	<a href="#" onClick="fn_paging(1)">[처음]</a> 
+                    <c:if test="${paging.curPage ne 1}">
+                        <a href="#" onClick="fn_paging(${paging.prevPage})">[이전]</a> 
+                    </c:if>
+                    <c:forEach var="pageNum" begin="${paging.startPage}" end="${paging.endPage}">
+                        <c:choose>
+                            <c:when test="${pageNum eq paging.curPage}">
+                                <span style="font-weight: bold;">
+                                    <a href="#" onClick="fn_paging(${pageNum})" style="font-weight: bold; color:red;">
+                                        ${pageNum}
+                                    </a>
+                                </span> 
+                            </c:when>
+                            <c:otherwise>
+                                <a href="#" onClick="fn_paging(${pageNum})">${pageNum}</a> 
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.nextPage})">[다음]</a> 
+                    </c:if>
+                    <c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.pageCnt})">[끝]</a> 
+                    </c:if>
+                </div>
+            </div>
+        </div>
 	</div>
 	<script src="/resources/js/boardList.js"></script>
 </body>

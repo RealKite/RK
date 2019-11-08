@@ -2,26 +2,55 @@ package com.us.rk.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.us.rk.model.dto.BoardBean;
+import com.us.rk.model.dto.PagingBean;
 import com.us.rk.model.service.BoardService;
 
 @Controller
 public class BoardController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	
 	@Autowired
 	private BoardService boardService;  
 	
+//	@RequestMapping("/board")
+//	public String boardList(Model model) {
+//		List<BoardBean> findAll = boardService.findAll();
+//		model.addAttribute("board", findAll);
+//		return "board";
+//	}
 	@RequestMapping("/board")
-	public String boardList(Model model) {
+	public String boardList(@ModelAttribute("board") BoardBean boardBean, 
+							@RequestParam(defaultValue="1") int curPage,
+							Model model) {
+		
+		logger.info("boardList Page");
+		
+		//Paging
+		int listCnt = boardService.boardListCount();
+		PagingBean paging = new PagingBean(listCnt, curPage);
+		boardBean.setStartIndex(paging.getStartIndex());
+		boardBean.setCntPerPage(paging.getPageSize());
+		
+		//boardList	
 		List<BoardBean> findAll = boardService.findAll();
+		
 		model.addAttribute("board", findAll);
+		model.addAttribute("listCnt", listCnt);
+		model.addAttribute("paging", paging);
+		
 		return "board";
 	}
 	
