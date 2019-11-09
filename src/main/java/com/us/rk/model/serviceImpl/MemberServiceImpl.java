@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int idCheck(String id) {
-		
+		System.out.println("serviceImpl: "+id);
 		return memberMapper.idCheck(id);
 	}
 }
