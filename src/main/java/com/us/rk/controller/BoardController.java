@@ -45,12 +45,11 @@ public class BoardController {
 		boardBean.setCntPerPage(paging.getPageSize());
 		
 		//boardList	
-		List<BoardBean> findAll = boardService.findAll();
+		List<BoardBean> findAll = boardService.findAll(boardBean);
 		
 		model.addAttribute("board", findAll);
 		model.addAttribute("listCnt", listCnt);
 		model.addAttribute("paging", paging);
-		
 		return "board";
 	}
 	

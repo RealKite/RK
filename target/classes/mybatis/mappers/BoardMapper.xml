@@ -4,7 +4,7 @@
 	
 <mapper namespace="com.us.rk.model.dao.BoardMapper">
 	<select id="findAll" resultType="com.us.rk.model.dto.BoardBean">
-		SELECT * FROM board ORDER BY board_no DESC
+		SELECT * FROM board ORDER BY board_no DESC LIMIT #{startIndex}, #{cntPerPage}
 	</select> 
 	<select id="boardListCount" resultType="Integer">
 		SELECT COUNT(*) FROM board

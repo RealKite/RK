@@ -8,7 +8,7 @@ import com.us.rk.model.dto.BoardBean;
 
 @Repository(value = "BoardMapper")
 public interface BoardMapper {
-	public List<BoardBean> findAll();
+	public List<BoardBean> findAll(BoardBean boardBean);
 	public BoardBean findById(int board_no);
 	public void boardWrite(BoardBean boardBean);
 	public void boardUpdate(BoardBean boardBean);

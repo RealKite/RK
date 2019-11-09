@@ -14,4 +14,16 @@ $(document).ready(function() {
 	$("#backBtn").click(function() {
 		history.go(-1)();
 	});
+
+	$(".aTag").click(function(event) {
+		event.preventDefault();
+		console.log($(this).attr("id"));
+		fn_paging($(this).attr("id"));
+	});
+	
+
 });
+
+function fn_paging(curPage){
+    location.href="/board?curPage="+curPage;
+}

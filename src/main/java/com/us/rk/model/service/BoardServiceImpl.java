@@ -14,8 +14,8 @@ public class BoardServiceImpl implements BoardService{
 	private BoardMapper boardMapper;
 	
 	@Override
-	public List<BoardBean> findAll() {
-		List<BoardBean> findAll = boardMapper.findAll(); 
+	public List<BoardBean> findAll(BoardBean boardBean) {
+		List<BoardBean> findAll = boardMapper.findAll(boardBean); 
 		return findAll;
 	}
 	@Override
