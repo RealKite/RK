@@ -33,8 +33,9 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value="id_check",method=RequestMethod.GET)
 	public int idCheck(@RequestParam("id")String id) {
-		
-		return memberService.idCheck(id);
+		System.out.println("id: "+id);
+		int re = memberService.idCheck(id);
+		return re;
 	}
 
 }
