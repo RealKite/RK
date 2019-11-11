@@ -13,6 +13,7 @@
 </head>
 <body>
  
+ <div>
  	<form action="signCheck" method="post" >
  	
  		<label for="id">아이디 : </label>
@@ -38,6 +39,8 @@
  		<input type="submit" value="가입" id="signBtn">
  	
  	</form>
+ </div>
+ 
  
 </body>
 </html>

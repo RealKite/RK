@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var idJ =/^[A-Za-z0-9]{4,20}$/;
 	var pwJ = /^[A-Za-z0-9]{4,12}$/; 
 	var emailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	var phoneJ = /^01([0|1]?)?([0-9]{4})?([0-9]{4})$/;
+	var phoneJ = /^01([0|1]?)?([0-9]{3,4})?([0-9]{4})$/;
 	
 	$("#id").blur(function(){
 
